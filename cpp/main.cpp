@@ -1,12 +1,3 @@
-/*
- * CLI-ядро (ТЗ: Python ↔ C++ через JSON).
- *
- * Вход:  params.json
- *   { "mode": "probs"|"experiment", "mu", "b", "p", "V", "num_graphs", "base_seed" }
- * Выход: result.json  — те же массивы, что раньше отдавал pybind.
- *
- * Сборка: см. build.ps1 / CMakeLists.txt (без pybind11).
- */
 #include "graph_core.h"
 
 #include <cmath>
@@ -21,7 +12,7 @@
 
 namespace {
 
-// --- Минимальный разбор плоского JSON (только наши ключи) ---
+//Минимальный разбор плоского JSON 
 std::string read_file(const std::string& path) {
     std::ifstream in(path);
     if (!in) throw std::runtime_error("Не удалось открыть: " + path);
@@ -59,7 +50,7 @@ std::string json_get_string(const std::string& s, const std::string& key, const 
     return s.substr(pos + 1, end - pos - 1);
 }
 
-// --- Запись JSON ---
+// Запись JSON 
 struct JsonWriter {
     std::ostream& out;
     bool first_field = true;
@@ -180,7 +171,7 @@ void run_and_write_experiment(
         flow_val.push_back(r.flow_ek);
         flow_agree.push_back(r.flow_agree);
 
-        // Прогресс в stderr (не портит JSON)
+     
         std::cerr << "[graph_core] graph " << (g_idx + 1) << "/" << num_graphs << "\n";
     }
 
