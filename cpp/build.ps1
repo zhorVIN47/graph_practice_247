@@ -1,5 +1,3 @@
-# Сборка graph_core.exe (JSON CLI, без pybind)
-# Usage: powershell -File cpp\build.ps1
 
 $ErrorActionPreference = "Stop"
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -7,7 +5,7 @@ Set-Location $here
 
 $out = Join-Path $here "graph_core.exe"
 
-# 1) MSVC cl, если есть в PATH / через vswhere
+
 $cl = Get-Command cl -ErrorAction SilentlyContinue
 if ($cl) {
     Write-Host "Building with MSVC cl..."
@@ -18,7 +16,7 @@ if ($cl) {
     exit 0
 }
 
-# 2) g++ (MSYS2 / MinGW)
+
 $gpp = Get-Command g++ -ErrorAction SilentlyContinue
 if (-not $gpp) {
     $gppPath = "C:\msys64\ucrt64\bin\g++.exe"
