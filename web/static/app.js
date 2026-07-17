@@ -64,7 +64,7 @@ async function api(path, body) {
     data = JSON.parse(text);
   } catch (_) {
     throw new Error(
-      "Сервер вернул не JSON (часто HTML-ошибка Flask). Смотри терминал с main.py.\n" +
+      "Сервер вернул не JSON о HTML-ошибка Flask \n" +
       text.slice(0, 200)
     );
   }
@@ -174,7 +174,7 @@ function renderResults(data) {
   let html = "";
 
   if (data.mode === "full_tz") {
-    html += `<div class="panel"><p class="ok">Полный прогон по ТЗ: ${(data.results || []).length} выборок.</p></div>`;
+    html += `<div class="panel"><p class="ok">Полный прогон: ${(data.results || []).length} выборок.</p></div>`;
   }
 
   if (data.all_probs) {
