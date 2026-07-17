@@ -1,8 +1,3 @@
-"""
-Веб-интерфейс Flask без Jinja2.
-UI: static/index.html + static/app.js
-API: JSON endpoints; вычисления через experiment.py -> graph_core.exe
-"""
 import os
 import sys
 
@@ -102,10 +97,6 @@ def api_probs():
 
 
 if __name__ == "__main__":
-    # use_reloader=False — на Windows два процесса на :5000 ломают браузер
-    # host=0.0.0.0 — доступ и с 127.0.0.1, и с localhost
-    print("Запуск: http://127.0.0.1:5000  (или http://localhost:5000)")
-    print("Остановка: Ctrl+C")
     app.run(
         host="0.0.0.0",
         port=5000,
