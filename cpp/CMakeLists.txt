@@ -4,7 +4,6 @@ project(graph_core LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# CLI-ядро: JSON in/out (без pybind)
 add_executable(graph_core main.cpp algorithms.cpp)
 target_include_directories(graph_core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
