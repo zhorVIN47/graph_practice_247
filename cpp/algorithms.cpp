@@ -2,10 +2,6 @@
 #include <chrono>
 #include <functional>
 
-// --- Задача 1: MST (Краскал / Прим / Борувка) ---
-// --- Задача 2–3: кратчайшие пути ---
-// --- Задача 4: максимальный поток (Эдмондс–Карп / Диниц / Push–Relabel) ---
-
 static constexpr int INF = 1000000000;
 
 struct DSU {
@@ -553,18 +549,18 @@ double time_ms(F&& f) {
 
 /*
  * Полный цикл по одному графу :
- * — метрики на всём графе / LCC
- * — Задача 1: MST (Краскал / Прим / Борувка)
- * — Задача 2: APSP (Флойд / Дейкстра×V / Джонсон) + сверка матриц расстояний
- * — Задача 3: путь между парой с max топологическим расстоянием (BFS)
- * — Задача 4: max-flow; s,t — пара с max взвешенным кратчайшим расстоянием
+ *  метрики на всём графе / LCC
+ *  Задача 1: MST (Краскал / Прим / Борувка)
+ * Задача 2: APSP (Флойд / Дейкстра×V / Джонсон) + сверка матриц расстояний
+ *  Задача 3: путь между парой с max топологическим расстоянием (BFS)
+ *  Задача 4: max-flow; s,t — пара с max взвешенным кратчайшим расстоянием
  */
 SingleGraphResult process_graph(const Graph& g) {
     SingleGraphResult r;
     r.metrics = compute_metrics(g);
     Graph lcc = get_lcc(g);
 
-    // --- Задача 1: MST ---
+    // Задача 1: MST
     r.t_kruskal = time_ms([&] { r.mst_kruskal = kruskal(lcc); });
     r.t_prim = time_ms([&] { r.mst_prim = prim(lcc); });
     r.t_boruvka = time_ms([&] { r.mst_boruvka = boruvka(lcc); });
