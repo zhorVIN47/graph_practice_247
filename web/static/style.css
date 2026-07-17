@@ -1,0 +1,70 @@
+:root {
+  --bg: #ffffff;
+  --panel: #f7f7f7;
+  --text: #111111;
+  --muted: #555555;
+  --accent: #1a5fb4;
+  --accent2: #0b7285;
+  --line: #cccccc;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "IBM Plex Sans", sans-serif;
+  background: #ffffff;
+  color: var(--text);
+  line-height: 1.45;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 18px 60px; }
+h1 { font-size: 1.75rem; margin: 0 0 6px; color: #000; }
+.sub { color: var(--muted); margin-bottom: 18px; }
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  background: #e8f0fe; color: #1a5fb4; font-size: 12px; font-weight: 600;
+}
+.panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+form.grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px; align-items: end;
+}
+label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+input, select {
+  background: #ffffff; border: 1px solid #999; color: var(--text);
+  border-radius: 6px; padding: 10px; font-size: 14px;
+}
+.actions { display: flex; gap: 10px; flex-wrap: wrap; grid-column: 1 / -1; }
+button {
+  border: 1px solid #1a5fb4; border-radius: 6px; padding: 11px 16px; font-weight: 650;
+  cursor: pointer; background: #1a5fb4; color: #ffffff;
+}
+button:disabled { opacity: 0.5; cursor: wait; }
+button.secondary { background: #ffffff; color: #111; border-color: #999; }
+button.danger { background: #c64600; border-color: #c64600; color: #fff; }
+.warn {
+  background: #fff8e6; border: 1px solid #e0b000; color: #5c4800;
+  padding: 12px; border-radius: 8px; margin-bottom: 14px;
+}
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0 18px; }
+th, td { border: 1px solid #999; padding: 8px 10px; text-align: center; }
+th { background: #e8e8e8; color: #000; }
+tr:nth-child(even) td { background: #f5f5f5; }
+h2 { margin: 8px 0 12px; font-size: 1.25rem; color: #000; }
+h3 { margin: 18px 0 8px; color: #0b7285; font-size: 1.05rem; }
+.chart-box { height: 320px; position: relative; margin-bottom: 16px; }
+.meta { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+.ok { color: #0a7a2f; font-weight: 600; }
+.note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+ul.insights { color: var(--text); }
+.scroll-x { overflow-x: auto; }
+
+@media print {
+  body { background: #fff; }
+  button, .actions, .note { display: none !important; }
+  .panel { break-inside: avoid; border-color: #999; }
+}

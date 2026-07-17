@@ -1,0 +1,29 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# C++ build
+cpp/build/
+cpp/*.obj
+cpp/*.o
+cpp/*.exp
+cpp/*.lib
+cpp/*.pdb
+*.cp314-*.pyd
+
+# Runtime / temp JSON
+io/
+!io/.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.user
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

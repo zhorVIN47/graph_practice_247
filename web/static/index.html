@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вариант 7 — Распределение Лапласа </title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+  <span class="badge" id="badge">Распределение Лапласа</span>
+  <h1>Исследование случайных взвешенных графов</h1>
+  
+
+  <div id="coreWarn" class="warn" hidden></div>
+  <div id="status" class="note" hidden></div>
+
+  <div class="panel">
+    <form class="grid" id="mainForm">
+      <label>Пресет (μ, b)
+        <select name="preset" id="preset"></select>
+      </label>
+      <label>μ <input type="number" step="0.1" name="mu" id="mu" value="25.0"></label>
+      <label>b <input type="number" step="0.1" name="b" id="b" value="1.5"></label>
+      <label>p
+        <select name="p_mode" id="p_mode"></select>
+      </label>
+      <label>V (вершин)
+        <input type="number" name="V" id="V" value="500" min="2">
+      </label>
+      <label>Графов в выборке
+        <input type="number" name="num_graphs" id="num_graphs" value="50" min="1">
+      </label>
+      <div class="actions">
+        <button type="submit" id="btnRun">Запустить выборку</button>
+        <button type="button" class="secondary" id="btnProbs">Таблица P(w)</button>
+        <button type="button" class="secondary" id="btnProbsAll">P(w) для всех 3 вариантов</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="out"></div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
