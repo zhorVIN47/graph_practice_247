@@ -53,9 +53,7 @@ def core_available() -> tuple[bool, str | None]:
 
 
 def _run_cpp(params: dict[str, Any]) -> dict[str, Any]:
-    """
-    Запись params.json -> graph_core.exe --params ... --out ... -> result.json
-    """
+
     ok, err = core_available()
     if not ok:
         raise RuntimeError(err)
@@ -221,10 +219,7 @@ def run_full_tz(
     num_graphs: int = TZ_NUM_GRAPHS,
     seed: int = 42,
 ) -> list[dict[str, Any]]:
-    """
-    Полный план по ТЗ: каждый из ≥3 наборов параметров × каждое p ∈ {0.05, 0.15, 0.4}.
-    Итого 9 независимых выборок по num_graphs графов.
-    """
+
     if V < TZ_V:
         raise ValueError(f"По ТЗ нужно V >= {TZ_V}, получено V={V}")
     if num_graphs < TZ_NUM_GRAPHS:
