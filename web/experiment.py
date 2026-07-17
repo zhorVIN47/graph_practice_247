@@ -1,10 +1,3 @@
-"""
-Оркестрация экспериментов по ТЗ (вариант 7).
-
-Связь с C++: обмен JSON-файлами + subprocess (без pybind).
-  Python пишет params.json -> запускает graph_core.exe -> читает result.json
-Агрегация mean/median/min/max — NumPy.
-"""
 from __future__ import annotations
 
 import json
@@ -17,7 +10,7 @@ import numpy as np
 
 _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 _CPP = os.path.join(_ROOT, "cpp")
-_IO_DIR = os.path.join(_ROOT, "io")  # сюда же можно класть отладочные JSON
+_IO_DIR = os.path.join(_ROOT, "io")  
 
 # Ищем скомпилированный бинарник
 _EXE_CANDIDATES = [
@@ -40,8 +33,6 @@ _IMPORT_ERROR = None if _EXE else (
     "Не найден graph_core.exe. Соберите: powershell -File cpp\\build.ps1"
 )
 
-
-# --- Параметры строго по ТЗ ---
 TZ_V = 500
 TZ_NUM_GRAPHS = 50
 P_VALUES = [0.05, 0.15, 0.4]
@@ -110,12 +101,7 @@ def algo_time_stats(
     names: list[str],
     result_values: np.ndarray | None = None,
 ) -> dict[str, Any]:
-    """
-    По каждой задаче (ТЗ):
-    среднее / медиана / min / max времени; число побед по скорости;
-    среднее значение результата (вес MST / avg path / flow …).
-    times: shape (n_algos, n_graphs)
-    """
+   
     n = times.shape[0]
     means = np.mean(times, axis=1)
     medians = np.median(times, axis=1)
@@ -255,7 +241,7 @@ def run_full_tz(
 
 def build_property_charts(results: list[dict[str, Any]]) -> dict[str, Any]:
     """
-    Данные для графиков влияния p и параметров распределения на свойства графов (ТЗ п.8 веб).
+    Данные для графиков влияния p и параметров распределения на свойства графов
     Группировка: линия = пресет (μ,b), ось X = p.
     """
     # ключ пресета → {p → mean metric}
@@ -289,7 +275,7 @@ def build_property_charts(results: list[dict[str, Any]]) -> dict[str, Any]:
             })
         charts["series"][m] = series
 
-    # Текстовые выводы-подсказки по ТЗ (для отчёта / UI)
+
     charts["insights"] = _insights(results)
     return charts
 
